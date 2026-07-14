@@ -85,10 +85,25 @@ You must supply your own legally obtained, supported APK. The build script
 rejects unknown APK and native-library hashes. Do not open an issue asking for
 copyrighted files or download links.
 
+The supported maintenance APK is available directly from its creator:
+
+- [Official Caustic 3 page](https://singlecellsoftware.com/caustic3.html)
+- [Official `Caustic_3.2.2_64b.apk` download](https://www.singlecellsoftware.com/download/Caustic_3.2.2_64b.apk)
+
+## Installation
+
+See the complete [Vita installation tutorial](docs/INSTALLING.md) for:
+
+- required Vita plugins and their official sources;
+- building the source-only VPK with the developer-provided APK;
+- transferring and installing through VitaShell USB or FTP;
+- first-launch, update, backup, and troubleshooting instructions.
+
 ## Runtime requirements
 
 - A homebrew-enabled PlayStation Vita
 - `kubridge.skprx`
+- `fd_fix.skprx` unless rePatch is installed
 - `libshacccg.suprx`
 - The normal vitaGL-compatible runtime setup
 - Sufficient space under `ux0:/data/CAUSTIC3/`
@@ -120,7 +135,7 @@ CAUSTIC_INCLUDE_EXTRAS=1 ./scripts/build-vpk.sh /path/to/supported.apk
 Nothing under `extras/` is distributed here. You are responsible for having
 permission to package and redistribute anything you add.
 
-Complete instructions: [BUILDING.md](docs/BUILDING.md).
+Developer build instructions: [BUILDING.md](docs/BUILDING.md).
 
 ## Enhanced content and skins
 
