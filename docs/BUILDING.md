@@ -61,6 +61,8 @@ use, create all three directories:
 
 ```text
 extras/skins/newskin/
+extras/skins/Julia/
+extras/skins/Echo/
 extras/presets/
 extras/songs/demo/
 ```
@@ -74,9 +76,9 @@ CAUSTIC_INCLUDE_EXTRAS=1 ./scripts/build-vpk.sh /path/to/caustic.apk
 Do not redistribute third-party packs without permission.
 
 The enhanced Vita build tested by the project maintainer uses this mechanism
-to add curated presets beyond the vanilla Caustic library. Optional skins use
-the same mechanism, but third-party skins are not guaranteed to render exactly
-as they do on Android; the default skin remains the compatibility baseline.
+to add curated presets beyond the vanilla Caustic library. The maintained
+release normalizes its bundled skins by removing Android-only font scaling
+overrides. Other third-party skins may require equivalent treatment.
 
 ## Vita3K archive
 

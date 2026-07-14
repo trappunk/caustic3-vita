@@ -608,17 +608,50 @@ int main(void) {
         DATA_PATH "caustic/config",
         "B WANT_FILL_LANDSCAPE ",
         "B WANT_FILL_LANDSCAPE TRUE\n");
+
+    /* Darker is extracted from the APK. Its legacy Android GLF overrides
+     * exhibit incorrect scaling on Vita, so inherit the stock UI fonts. */
+    sceIoRemove(DATA_PATH "caustic/skins/Darker/machinetext.glf");
+    sceIoRemove(DATA_PATH "caustic/skins/Darker/droidsans.glf");
+    sceIoRemove(DATA_PATH "caustic/skins/Darker/c64.glf");
 #ifdef CAUSTIC_BUNDLED_EXTRAS
-    /* The original Echo BMFont pair is not rendered correctly by the Vita
-     * graphics path. Version 00.33 deliberately substitutes Caustic's known-
-     * working stock machine font while retaining all other Echo artwork.
-     * Remove Echo's scale overrides so stock font metrics are used. */
+    /* Preserve all newskin artwork while using Vita-safe UI font metrics. */
     sceIoRemove(DATA_PATH "caustic/skins/newskin/machinetext.cfg");
     install_caustic_extra_bundle(
         "app0:/extra/skins/newskin",
         DATA_PATH "caustic/skins/newskin",
-        DATA_PATH ".extra_skin_newskin_v5.ready",
-        "newskin stock machine-font compatibility test", 0);
+        DATA_PATH ".extra_skin_newskin_v8.ready",
+        "complete newskin Vita compatibility profile", 0);
+    sceIoRemove(DATA_PATH "caustic/skins/newskin/clean.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/newskin/clean_0.tga");
+    sceIoRemove(DATA_PATH "caustic/skins/newskin/c64.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/newskin/c64_0.tga");
+
+    install_caustic_extra_bundle(
+        "app0:/extra/skins/Julia",
+        DATA_PATH "caustic/skins/Julia",
+        DATA_PATH ".extra_skin_julia_v2.ready",
+        "Julia Vita-compatible skin pack", 0);
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/machinetext.cfg");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/machinetext.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/machinetext_0.tga");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/clean.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/clean_0.tga");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/c64.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Julia/c64_0.tga");
+
+    install_caustic_extra_bundle(
+        "app0:/extra/skins/Echo",
+        DATA_PATH "caustic/skins/Echo",
+        DATA_PATH ".extra_skin_echo_vita_v1.ready",
+        "Echo Vita-compatible skin pack", 0);
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/machinetext.cfg");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/machinetext.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/machinetext_0.tga");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/clean.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/clean_0.tga");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/c64.fnt");
+    sceIoRemove(DATA_PATH "caustic/skins/Echo/c64_0.tga");
     install_caustic_extra_bundle(
         "app0:/extra/presets",
         DATA_PATH "caustic/presets",

@@ -10,7 +10,7 @@ include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
 set(VITA_APP_NAME "Caustic 3 Vita")
 set(VITA_TITLEID "CSTC00001")
-set(VITA_VERSION "01.01")
+set(VITA_VERSION "01.02")
 set(VPK_DATA_ROOT "/tmp/caustic3-vpk-data" CACHE PATH "Space-free path to APK data")
 set(CAUSTIC_PROFILE "demo3320" CACHE STRING "Caustic native binary profile")
 option(CAUSTIC_INCLUDE_EXTRAS "Package locally supplied optional extras" OFF)
@@ -22,7 +22,12 @@ elseif(NOT CAUSTIC_PROFILE STREQUAL "demo3320")
 endif()
 
 if(CAUSTIC_INCLUDE_EXTRAS)
-    foreach(EXTRA_DIRECTORY skins/newskin presets songs/demo)
+    foreach(EXTRA_DIRECTORY
+            skins/newskin
+            skins/Julia
+            skins/Echo
+            presets
+            songs/demo)
         if(NOT EXISTS "${VPK_DATA_ROOT}/extras/${EXTRA_DIRECTORY}")
             message(FATAL_ERROR
                 "CAUSTIC_INCLUDE_EXTRAS requires ${VPK_DATA_ROOT}/extras/${EXTRA_DIRECTORY}")
@@ -31,6 +36,8 @@ if(CAUSTIC_INCLUDE_EXTRAS)
     add_compile_definitions(CAUSTIC_BUNDLED_EXTRAS=1)
     set(CAUSTIC_VPK_EXTRAS
         FILE ${VPK_DATA_ROOT}/extras/skins/newskin extra/skins/newskin
+        FILE ${VPK_DATA_ROOT}/extras/skins/Julia extra/skins/Julia
+        FILE ${VPK_DATA_ROOT}/extras/skins/Echo extra/skins/Echo
         FILE ${VPK_DATA_ROOT}/extras/presets extra/presets
         FILE ${VPK_DATA_ROOT}/extras/songs/demo extra/songs/demo)
 else()
