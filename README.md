@@ -1,6 +1,10 @@
 # Caustic 3 Vita
 
-![Caustic 3 Vita LiveArea artwork](branding/source/livearea-original.png)
+<p align="center">
+  <img src="sce_sys/livearea/contents/bg0.png"
+       alt="Caustic 3 Vita LiveArea artwork"
+       width="840">
+</p>
 
 An unofficial, non-commercial PlayStation Vita wrapper for **Caustic 3**, the
 mobile music workstation created by **Rej Poirier / Single Cell Software**.
