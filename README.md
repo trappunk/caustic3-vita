@@ -28,9 +28,10 @@ modern 64-bit-compatible maintenance release, not the older demo APK used by
 the wrapper's legacy compatibility profile. The build script identifies the
 exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
-> **Project status: public beta.** The wrapper is functional on physical Vita
-> hardware, but the 01.01 security-hardened build still needs broader hardware
-> regression testing. Read [Known limitations](#known-limitations) before use.
+> **Project status: stable 1.0 release.** A complete, installable VPK is
+> published through [GitHub Releases](https://github.com/trappunk/caustic3-vita/releases).
+> End users do not need VitaSDK, a local build environment, or a separate APK.
+> Read [Known limitations](#known-limitations) before use.
 
 ## Highlights
 
@@ -44,7 +45,7 @@ exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 - Project, preset, sample, skin, save, export, and data-directory support
 - Additional curated presets beyond the vanilla Caustic factory library in the
   enhanced Vita build
-- First-launch extraction of factory content from the user's own APK
+- First-launch extraction of factory content from the packaged official APK
 - Custom Vita bubble and LiveArea assets
 - Two supported Caustic binary profiles selected by cryptographic hash
 - Central path policy protecting Vita storage from crafted Caustic paths
@@ -67,6 +68,12 @@ does not mean open source or public domain: Caustic, its engine, artwork,
 factory content, name, and trademarks remain the property of their respective
 rights holders.
 
+The project's public history includes the archived
+[2021 Caustic3Vita bounty discussion](https://github.com/vita-nuova/bounties/issues/35),
+where Trackelf reported Rej's encouragement of a Vita port. The later
+[upstream permission record](https://github.com/Trackelf/caustic3-vita-wrapper/blob/main/docs/PERMISSION.md)
+documents the non-commercial community-distribution basis used here.
+
 The Vita work in this repository was developed and hardware-tested by
 **trappunk (Tennis Rodman)** in July 2026, with extensive assistance from
 **OpenAI Codex**. The AI disclosure is intentionally explicit; see
@@ -76,27 +83,34 @@ Additional foundations include VitaSDK, vitaGL, vitaShaRK, kubridge, FalsoJNI,
 the Vita Android-wrapper community, TheFloW's loader techniques, and work by
 Rinnegatamante and other Vita homebrew contributors. See [CREDITS.md](CREDITS.md).
 
-## What is and is not included
+## What is included
 
-This repository contains only redistributable project material:
+The Git source tree contains the redistributable development material:
 
 - Vita wrapper and compatibility source
 - Build scripts and host-side tests
 - Vita package metadata and original project branding
 - Documentation and security-audit artifacts
 
-It does **not** contain:
+The source tree does **not** contain large proprietary or generated binaries:
 
 - A Caustic APK
 - `libcaustic.so`
-- A compiled VPK or eboot
+- A compiled VPK or eboot in Git history
 - Caustic factory assets
 - Unlock packages or license-bypass code
-- Third-party preset, song, sample, or skin collections
+- Third-party preset, song, sample, or skin collections in Git history
 
-You must supply your own legally obtained, supported APK. The build script
-rejects unknown APK and native-library hashes. Do not open an issue asking for
-copyrighted files or download links.
+The separately published **complete VPK Release asset** includes the supported
+official Caustic maintenance APK, its ARMv7 library and factory content, the
+tested enhanced preset/skin collection, and the original *Vita Means Life*
+demo project. This provides the normal Vita-wrapper experience: install one
+VPK and launch it. The non-commercial community distribution is based on the
+[rights-holder permission documented by the upstream wrapper](https://github.com/Trackelf/caustic3-vita-wrapper/blob/main/docs/PERMISSION.md).
+See [LEGAL.md](docs/LEGAL.md) for scope and attribution.
+
+Developers may still build from source with their own legally obtained APK.
+The build script rejects unknown APK and native-library hashes.
 
 The supported maintenance APK is available directly from its creator:
 
@@ -108,7 +122,7 @@ The supported maintenance APK is available directly from its creator:
 See the complete [Vita installation tutorial](docs/INSTALLING.md) for:
 
 - required Vita plugins and their official sources;
-- building the source-only VPK with the developer-provided APK;
+- downloading the ready-to-install full VPK from GitHub Releases;
 - transferring and installing through VitaShell USB or FTP;
 - first-launch, update, backup, and troubleshooting instructions.
 
@@ -125,7 +139,7 @@ PSVshell overclocking is optional but recommended for demanding projects.
 System-plugin installation is outside this repository; follow the current
 documentation for each plugin and do not install conflicting I/O-fix plugins.
 
-## Build overview
+## Building from source (developers)
 
 The VitaSDK and all linked graphics/math dependencies must use the compatible
 `softfp` ABI. With the environment ready:
@@ -152,7 +166,7 @@ Developer build instructions: [BUILDING.md](docs/BUILDING.md).
 
 ## Enhanced content and skins
 
-The enhanced Vita build maintained and tested for this project includes a
+The complete VPK Release maintained and tested for this project includes a
 curated selection of additional presets that are not part of the vanilla
 Caustic installation. These expand the available sounds while leaving the
 original factory preset library intact.
@@ -163,9 +177,9 @@ behavior and may show missing labels, blank UI elements, incorrect colors, or
 brief visual artifacts on Vita. The default Caustic skin is the recommended
 fallback if an extra skin does not render correctly.
 
-The public source repository does not redistribute third-party preset or skin
-packs. Locally owned or appropriately licensed extras can be supplied through
-the `extras/` build path described above.
+The Git source tree does not store third-party preset or skin packs. They are
+packaged only in the enhanced binary Release. Locally owned or appropriately
+licensed extras can also be supplied through the `extras/` build path above.
 
 ## Controls
 
@@ -235,8 +249,9 @@ without source. Read [SECURITY.md](SECURITY.md) and the
   memory limits.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
   outside this source audit.
-- The 01.01 path-policy build is source-verified and packaged successfully but
-  should be hardware regression-tested before replacing a known-good install.
+- Release 01.01 has been regression-tested on physical Vita hardware. Linker
+  section garbage collection remains disabled because Caustic reaches wrapper
+  functions indirectly through its runtime import resolver.
 
 ## Testing and diagnostics
 

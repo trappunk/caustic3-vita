@@ -10,16 +10,39 @@ Caustic open source, public domain, or freely redistributable in every form.
 Caustic's APK, `libcaustic.so`, factory content, artwork, name, and trademarks
 remain subject to their owners' rights.
 
-The upstream Trackelf project documents a non-commercial community-port
-permission from the Caustic rights holder in its
+The upstream Trackelf project documents permission from the Caustic rights
+holder for a non-commercial community PS Vita distribution and bundling of the
+Caustic native component in its
 [permission record](https://github.com/Trackelf/caustic3-vita-wrapper/blob/main/docs/PERMISSION.md).
-This repository does not broaden or reinterpret that statement. To avoid
-misrepresentation, it publishes source and original project material only;
-users supply their own APK, and no prebuilt VPK is published here.
+This project relies on that permission only for the same non-commercial
+community-port purpose and does not claim broader rights.
+
+There is also earlier public context in the archived
+[Caustic3Vita bounty discussion](https://github.com/vita-nuova/bounties/issues/35).
+In 2021, Trackelf reported having contacted Rej Poirier, said Rej supported the
+idea of a Vita port and was willing to answer porting questions, and described
+an intended legal path for activation. That issue is a community member's
+account rather than a direct public license from the rights holder, so it is
+recorded as project history—not treated as the redistribution grant. The later
+upstream permission record above is the distribution basis.
+
+The Git source tree omits Caustic's APK, native library, factory content, and
+generated VPK. A complete installable VPK is distributed separately as a
+GitHub Release asset so Vita users are not required to install a compiler or
+rebuild the application. That binary release includes the exact official
+maintenance APK identified in the release notes. It remains an unofficial,
+non-commercial compatibility distribution; it does not relicense Caustic.
+
+Additional presets and skins in the enhanced Release remain attributable to
+their respective authors. The *Vita Means Life* demo project is contributed by
+trappunk/Tennis Rodman. If a rights holder identifies material that should not
+be distributed, open an issue or use GitHub's contact channel and it will be
+reviewed promptly. A verified removal request from Rej Poirier / Single Cell
+Software will be honored.
 
 No unlock, billing bypass, key circumvention, or license-check patch is
-implemented. The wrapper reports unavailable Android billing services and uses
-the behavior of the supplied supported build.
+implemented. The Release uses the developer-published final maintenance build,
+which the developer states does not require the old unlocker APK.
 
 The “Caustic 3 Vita” name describes compatibility. No ownership of Caustic is
 claimed, and no infringement is intended. A verified request from a rights

@@ -43,10 +43,8 @@ add_compile_definitions(
     DATA_PATH="ux0:/data/CAUSTIC3/"
 )
 add_compile_options(-O2 -g -mfloat-abi=softfp -mfpu=neon
-    -ffunction-sections -fdata-sections
     -Wno-incompatible-pointer-types -Wno-int-conversion)
-add_link_options(-Wl,-q -Wl,--no-warn-mismatch -Wl,-z,max-page-size=0x2000
-    -Wl,--gc-sections)
+add_link_options(-Wl,-q -Wl,--no-warn-mismatch -Wl,-z,max-page-size=0x2000)
 
 add_executable(caustic3
     src/apk_extract.c

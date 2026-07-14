@@ -15,7 +15,10 @@ different authors.
    is not relicensed beyond whatever rights its authors and applicable source
    headers grant.
 5. Caustic itself—including its APK, native library, factory content, artwork,
-   name, and trademarks—is not licensed by this repository and is not included.
+   name, and trademarks—is not relicensed by this repository. When included in
+   a non-commercial binary Release asset, it remains under its rights holder's
+   terms and the upstream community-port permission documented in
+   `docs/LEGAL.md`; it is not covered by the MIT grant below.
 
 ## MIT License for eligible project-specific contributions
 
