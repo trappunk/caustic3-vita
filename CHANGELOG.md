@@ -1,5 +1,16 @@
 # Changelog
 
+## 01.02 — 2026-07-14 (stable 1.0.1 release)
+
+- Corrected Vita font inheritance for the complete bundled skin collection.
+- Removed Android-only BMFont/GLF scaling overrides that produced blank menu
+  labels or extremely oversized glyphs.
+- Verified Default, Flat, Blackbox, Frost, Darker, newskin, Julia, and Echo on
+  physical Vita hardware, including skin selection and preset browsers.
+- Added complete normalized Julia and Echo skin bundles to the enhanced release.
+- Removed macOS AppleDouble metadata from packaged skin directories.
+- Finalized the borderless custom LiveArea presentation and launch target.
+
 ## 01.01 — 2026-07-13 (stable 1.0 release)
 
 - Added centralized filesystem confinement for all imported path operations.

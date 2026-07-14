@@ -12,6 +12,8 @@
 - Cold boot and warm relaunch.
 - First-launch factory-content extraction.
 - Default skin startup and subsequent skin persistence.
+- Skin selector and preset-list text under every bundled skin: Default, Flat,
+  Blackbox, Frost, Darker, newskin, Julia, and Echo.
 - Open every machine type and management screen.
 - Check rapid transitions for intermediate-frame flashes.
 - Verify LiveArea, icon, and startup artwork.

@@ -11,7 +11,7 @@
 | Synth and BeatBox playback | Working | Machine-specific geometry/audio compatibility fixes included. |
 | Preset discovery/loading | Working | APK factory content is extracted into the Vita data root. |
 | Additional presets | Working in enhanced build | Curated presets beyond the vanilla factory library can be installed without replacing factory content. |
-| Third-party skins | Partial | Extra skins can load, but some exhibit missing text, blank elements, incorrect colors, atlas errors, or transition artifacts. |
+| Bundled skins | Working | Default, Flat, Blackbox, Frost, Darker, newskin, Julia, and Echo were normalized and checked on physical hardware. |
 | Save/load | Working | Projects save beneath `ux0:/data/CAUSTIC3/`. |
 | Front touch | Working | Direct touch mapping at Vita resolution. |
 | Multi-touch | Working | Multiple independent front-panel pointers support chords. |
@@ -51,4 +51,4 @@
 - Guaranteed compatibility with unrecognized APK revisions
 - Independent audit of proprietary Caustic parser/server internals
 - On-demand microphone lifecycle (planned)
-- Guaranteed rendering compatibility for third-party skins
+- Automatic compatibility for arbitrary user-added Android skins

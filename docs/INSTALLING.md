@@ -98,8 +98,9 @@ installation requirement.
 - Do not interrupt the first launch merely because extraction appears slow.
 - Touch controls are enabled by default. Press **Triangle** to toggle the
   optional physical-control mode.
-- The default skin is the compatibility baseline. Some third-party skins can
-  show missing text, blank controls, incorrect colors, or transition artifacts.
+- The bundled skin collection is Vita-normalized and hardware-tested. Skins
+  added separately by users may still contain incompatible Android font-scale
+  overrides.
 
 ## Updating an existing installation
 
@@ -122,7 +123,8 @@ Do not delete it unless you intentionally want a clean reset.
   an interrupted USB/FTP copy can leave a truncated package.
 - **Very slow VPK installation:** use the normal compressed Vita VPK, keep the
   system awake, and ensure the storage device has sufficient free space.
-- **Missing skin text or controls:** switch back to the default skin.
+- **Missing text in a separately added skin:** switch back to a bundled skin;
+  the added skin may contain Android-specific BMFont or GLF scale overrides.
 - **Crash or unexpected behavior:** attach the latest log from:
 
   ```text

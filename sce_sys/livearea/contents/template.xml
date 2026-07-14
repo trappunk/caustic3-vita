@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<livearea style="a1" format-ver="01.00" content-rev="1">
+<livearea style="ad0" format-ver="01.00" content-rev="6">
     <livearea-background>
         <image>bg0.png</image>
     </livearea-background>
-    <gate>
-        <startup-image>startup.png</startup-image>
-    </gate>
+
+    <frame id="frame1" multi="o" autoflip="1">
+        <liveitem>
+            <target>psla:eboot</target>
+            <image y="35" width="560" height="316">startup.png</image>
+        </liveitem>
+    </frame>
 </livearea>

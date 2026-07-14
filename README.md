@@ -171,11 +171,11 @@ curated selection of additional presets that are not part of the vanilla
 Caustic installation. These expand the available sounds while leaving the
 original factory preset library intact.
 
-Optional third-party skins are also supported, but compatibility is not
-guaranteed. Some skins rely on Android-specific texture-atlas, font, or reload
-behavior and may show missing labels, blank UI elements, incorrect colors, or
-brief visual artifacts on Vita. The default Caustic skin is the recommended
-fallback if an extra skin does not render correctly.
+The enhanced release includes a Vita-normalized skin collection. Default,
+Flat, Blackbox, Frost, Darker, newskin, Julia, and Echo have been checked on
+physical Vita hardware, including their skin-selection and preset-browser
+text. Arbitrary skins added by users are not automatically guaranteed to work:
+Android-specific font scaling overrides may require the same normalization.
 
 The Git source tree does not store third-party preset or skin packs. They are
 packaged only in the enhanced binary Release. Locally owned or appropriately
@@ -242,14 +242,13 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 - USB MIDI input is not supported. The Vita does not provide a conventional
   USB-OTG host path for class-compliant MIDI devices.
 - The controller layer synthesizes touch events and may need per-screen tuning.
-- Some optional third-party skins have incomplete Vita compatibility and can
-  display missing text, blank controls, texture-atlas errors, or transition
-  artifacts. Switching back to the default skin is the safest workaround.
+- The bundled skin collection is hardware-tested. Unrecognized third-party
+  skins may still require removal of Android-specific font scale overrides.
 - Some unusually heavy projects or presets may exceed Vita performance or
   memory limits.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
   outside this source audit.
-- Release 01.01 has been regression-tested on physical Vita hardware. Linker
+- Release 01.02 has been regression-tested on physical Vita hardware. Linker
   section garbage collection remains disabled because Caustic reaches wrapper
   functions indirectly through its runtime import resolver.
 
