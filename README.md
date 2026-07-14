@@ -68,6 +68,12 @@ does not mean open source or public domain: Caustic, its engine, artwork,
 factory content, name, and trademarks remain the property of their respective
 rights holders.
 
+The project's public history includes the archived
+[2021 Caustic3Vita bounty discussion](https://github.com/vita-nuova/bounties/issues/35),
+where Trackelf reported Rej's encouragement of a Vita port. The later
+[upstream permission record](https://github.com/Trackelf/caustic3-vita-wrapper/blob/main/docs/PERMISSION.md)
+documents the non-commercial community-distribution basis used here.
+
 The Vita work in this repository was developed and hardware-tested by
 **trappunk (Tennis Rodman)** in July 2026, with extensive assistance from
 **OpenAI Codex**. The AI disclosure is intentionally explicit; see

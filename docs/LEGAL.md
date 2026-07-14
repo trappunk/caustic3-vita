@@ -17,6 +17,15 @@ Caustic native component in its
 This project relies on that permission only for the same non-commercial
 community-port purpose and does not claim broader rights.
 
+There is also earlier public context in the archived
+[Caustic3Vita bounty discussion](https://github.com/vita-nuova/bounties/issues/35).
+In 2021, Trackelf reported having contacted Rej Poirier, said Rej supported the
+idea of a Vita port and was willing to answer porting questions, and described
+an intended legal path for activation. That issue is a community member's
+account rather than a direct public license from the rights holder, so it is
+recorded as project history—not treated as the redistribution grant. The later
+upstream permission record above is the distribution basis.
+
 The Git source tree omits Caustic's APK, native library, factory content, and
 generated VPK. A complete installable VPK is distributed separately as a
 GitHub Release asset so Vita users are not required to install a compiler or
@@ -28,7 +37,8 @@ Additional presets and skins in the enhanced Release remain attributable to
 their respective authors. The *Vita Means Life* demo project is contributed by
 trappunk/Tennis Rodman. If a rights holder identifies material that should not
 be distributed, open an issue or use GitHub's contact channel and it will be
-reviewed and removed promptly.
+reviewed promptly. A verified removal request from Rej Poirier / Single Cell
+Software will be honored.
 
 No unlock, billing bypass, key circumvention, or license-check patch is
 implemented. The Release uses the developer-published final maintenance build,
