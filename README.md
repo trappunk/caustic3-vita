@@ -15,6 +15,19 @@ graphics, audio, input, and filesystem calls, and packages the result as a Vita
 application. It is a compatibility wrapper—not a decompilation, rewrite,
 emulator, crack, or ownership claim over Caustic.
 
+## Upstream Caustic version
+
+The primary enhanced Vita build is based on
+**`Caustic_3.2.2_64b.apk`**, the most recent official Android maintenance build
+published by Rej Poirier / Single Cell Software. The developer provides that
+build and its release notes on the
+[official Caustic 3 page](https://www.singlecellsoftware.com/caustic3.html).
+
+This distinction matters: the current full Vita build uses the developer's
+modern 64-bit-compatible maintenance release, not the older demo APK used by
+the wrapper's legacy compatibility profile. The build script identifies the
+exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
+
 > **Project status: public beta.** The wrapper is functional on physical Vita
 > hardware, but the 01.01 security-hardened build still needs broader hardware
 > regression testing. Read [Known limitations](#known-limitations) before use.
@@ -87,7 +100,7 @@ copyrighted files or download links.
 
 The supported maintenance APK is available directly from its creator:
 
-- [Official Caustic 3 page](https://singlecellsoftware.com/caustic3.html)
+- [Official Caustic 3 page](https://www.singlecellsoftware.com/caustic3.html)
 - [Official `Caustic_3.2.2_64b.apk` download](https://www.singlecellsoftware.com/download/Caustic_3.2.2_64b.apk)
 
 ## Installation

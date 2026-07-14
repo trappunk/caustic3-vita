@@ -10,7 +10,7 @@
 - A legally obtained APK matching a supported profile
 
 The supported maintenance APK is published by the Caustic developer on the
-[official Caustic 3 page](https://singlecellsoftware.com/caustic3.html). End
+[official Caustic 3 page](https://www.singlecellsoftware.com/caustic3.html). End
 users should begin with the [Vita installation tutorial](INSTALLING.md).
 
 All linked ARM libraries must agree on `-mfloat-abi=softfp` and the expected
@@ -22,8 +22,11 @@ crashes.
 The build script selects profiles by exact APK and ARMv7 library SHA-256. It
 currently knows:
 
-- `demo3320`: Caustic 3.3.2.0 demo profile
-- `full322`: Caustic 3.2.2 64-bit maintenance APK with an ARMv7 library
+- `full322`: primary enhanced Vita profile, based on
+  `Caustic_3.2.2_64b.apk`—the most recent official Android maintenance build
+  published by the Caustic developer
+- `demo3320`: legacy compatibility profile for the older Caustic 3.3.2.0 demo
+  APK used during early wrapper development
 
 Unknown files fail closed. Adding a profile requires a source review of its
 imports, offsets, lifecycle, renderer hooks, and native symbol addresses—not
