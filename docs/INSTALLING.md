@@ -1,9 +1,10 @@
 # Installing Caustic 3 Vita
 
-This guide covers building the source-only package and installing the resulting
-VPK on a homebrew-enabled PlayStation Vita. It does not cover modifying a stock
-Vita; use the maintained [Vita Hacks Guide](https://vita.hacks.guide/) if your
-system is not already prepared for homebrew.
+This guide covers installing the ready-to-use VPK on a homebrew-enabled
+PlayStation Vita. End users do not need to build anything or place an APK in a
+data folder. It does not cover modifying a stock Vita; use the maintained
+[Vita Hacks Guide](https://vita.hacks.guide/) if your system is not already
+prepared for homebrew.
 
 ## 1. Download Caustic from its developer
 
@@ -18,12 +19,13 @@ version from the developer's website:
 The currently supported official APK has this SHA-256:
 
 ```text
-7cf80508530e041821ab04693c6fc7bbd1fcd4c4b598cef825d3fd212b568ebf
+7cf80508530e041821ab04693c6fc7bbd1fcd4c598cef825d3fd212b568ebf
 ```
 
-The build script checks this value and also verifies the embedded ARMv7 native
-library. Unknown or modified APKs fail closed. The APK is free to download from
-the developer, but it is not stored in this source repository.
+The complete VPK Release already packages this supported version. The links
+are provided for attribution, reference, and developers performing their own
+source build. The build script checks this value and also verifies the embedded
+ARMv7 native library; unknown or modified APKs fail closed.
 
 ## 2. Prepare the Vita
 
@@ -55,27 +57,19 @@ kernel plugins.
 **Do not install `fd_fix.skprx` when rePatch is installed.** rePatch already
 provides the relevant behavior, and combining them can create a conflict.
 
-## 3. Build the VPK
+## 3. Download the complete VPK
 
-This repository currently publishes source rather than a prebuilt VPK. On a
-macOS or Linux development computer, install the softfp VitaSDK environment and
-dependencies described in [BUILDING.md](BUILDING.md), then run:
+Open the project's [GitHub Releases](https://github.com/trappunk/caustic3-vita/releases)
+page and download the `.vpk` attached to the latest stable release. You do not
+need the repository source archive and you do not need to download or rename an
+APK separately.
 
-```sh
-git clone https://github.com/trappunk/caustic3-vita.git
-cd caustic3-vita
-export VITASDK=/path/to/vitasdk
-./scripts/build-vpk.sh /path/to/Caustic_3.2.2_64b.apk
-```
+Compare the downloaded file against the SHA-256 printed in that release's
+notes. A mismatch normally means the download or transfer was incomplete.
 
-The full-profile output is:
-
-```text
-build-full322/Caustic3Vita.vpk
-```
-
-Optional presets, skins, and the project demo are packaged only when you supply
-appropriately licensed local extras and build with `CAUSTIC_INCLUDE_EXTRAS=1`.
+Developers who specifically want to reproduce or modify the wrapper can follow
+[BUILDING.md](BUILDING.md). That is an optional developer workflow, not an
+installation requirement.
 
 ## 4. Transfer and install the VPK
 
@@ -84,7 +78,8 @@ appropriately licensed local extras and build with `CAUSTIC_INCLUDE_EXTRAS=1`.
 1. Connect the Vita to the computer with a USB cable.
 2. Open VitaShell and press **Select** to start USB mode. If Select starts FTP,
    change VitaShell's Select-button setting to USB first.
-3. Copy `Caustic3Vita.vpk` to a convenient location such as `ux0:/data/`.
+3. Copy the downloaded Caustic 3 Vita VPK to a convenient location such as
+   `ux0:/data/`.
 4. End the USB connection and return to VitaShell's file browser.
 5. Highlight the VPK, press **Cross**, and confirm installation.
 6. Return to LiveArea and launch **Caustic 3 Vita**.
