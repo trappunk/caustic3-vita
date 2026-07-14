@@ -7,10 +7,12 @@ system is not already prepared for homebrew.
 
 ## 1. Download Caustic from its developer
 
-Rej Poirier / Single Cell Software publishes the final Android maintenance
-build on the official Caustic website:
+Caustic 3 Vita's primary enhanced build is based on
+`Caustic_3.2.2_64b.apk`, the most recent official Android maintenance build
+published by Rej Poirier / Single Cell Software. Obtain that exact upstream
+version from the developer's website:
 
-- [Official Caustic 3 download page](https://singlecellsoftware.com/caustic3.html)
+- [Official Caustic 3 download page](https://www.singlecellsoftware.com/caustic3.html)
 - [Direct official `Caustic_3.2.2_64b.apk` download](https://www.singlecellsoftware.com/download/Caustic_3.2.2_64b.apk)
 
 The currently supported official APK has this SHA-256:
