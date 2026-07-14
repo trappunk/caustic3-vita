@@ -1,0 +1,190 @@
+{
+  "completeness": "partial",
+  "deferred": [
+    {
+      "id": "DEF-001",
+      "paths": [
+        "libcaustic.so"
+      ],
+      "reason": "The stripped proprietary Caustic parser and embedded server source is unavailable, so their internal memory safety and authentication logic cannot be audited.",
+      "surfaceIds": [
+        "COV-012"
+      ]
+    },
+    {
+      "id": "DEF-002",
+      "paths": [
+        ".deps/**",
+        ".toolchain/**",
+        "build*/**",
+        "backups/**",
+        "recovery/**"
+      ],
+      "reason": "Generated toolchains, binary artifacts, and backups require provenance/retention review rather than maintained-source vulnerability discovery.",
+      "surfaceIds": [
+        "COV-014"
+      ]
+    }
+  ],
+  "documentType": "codex-security.coverage",
+  "excludePaths": [
+    ".deps/**",
+    ".toolchain/**",
+    "build*/**",
+    "**/*.vpk",
+    "**/*.apk",
+    "**/*.so",
+    "**/*.a",
+    "backups/**",
+    "recovery/**"
+  ],
+  "explicitExclusions": [
+    {
+      "pattern": ".deps/** and .toolchain/**",
+      "reason": "Generated dependency/toolchain material is outside maintained-source review."
+    },
+    {
+      "pattern": "build*/**, *.vpk, *.apk, *.so, *.a",
+      "reason": "Generated binaries were excluded from source review; the shipped native import table and release hashes were inspected separately."
+    },
+    {
+      "pattern": "backups/**, recovery/**, copied assets",
+      "reason": "Historical/generated copies were excluded from source discovery and assigned to the separate clean-sweep review."
+    }
+  ],
+  "includePaths": [
+    "."
+  ],
+  "inventoryStrategy": "repository",
+  "mode": "repository",
+  "openQuestions": [
+    {
+      "followUpPrompt": "Run a non-destructive sentinel read/write test against a disposable Vita data directory after adding detailed bridge logging.",
+      "question": "Can a benign crafted Caustic project drive each path bridge to a sentinel outside the data root on hardware?"
+    },
+    {
+      "followUpPrompt": "Trace native imports/callbacks around the recording UI so microphone lifetime can be gated without regressing working capture.",
+      "question": "What exact proprietary callback or state indicates that sampler/vocoder recording has armed and disarmed?"
+    }
+  ],
+  "scanId": "69c14c7dc438_20260713T222204Z",
+  "schemaVersion": "1.0",
+  "surfaces": [
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-001",
+      "label": "Build and VPK packaging",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-002",
+      "label": "ARM ELF loader and relocation",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "rejected",
+      "id": "COV-003",
+      "label": "Android and JNI bridge",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "reported",
+      "id": "COV-004",
+      "label": "Filesystem translation and project content",
+      "receiptRefs": [
+        "artifacts/05_findings/CAND-001/attack_path_analysis_report.md",
+        "artifacts/05_findings/CAND-002/attack_path_analysis_report.md"
+      ]
+    },
+    {
+      "disposition": "rejected",
+      "id": "COV-005",
+      "label": "Embedded APK and ZIP demo extraction",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-006",
+      "label": "Fortify and formatting compatibility",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "reported",
+      "id": "COV-007",
+      "label": "Audio output and microphone capture",
+      "receiptRefs": [
+        "artifacts/05_findings/CAND-003/attack_path_analysis_report.md"
+      ]
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-008",
+      "label": "Graphics, shaders, and render geometry",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-009",
+      "label": "Touch, controller, and synthesized input",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "COV-010",
+      "label": "Logging and exception handling",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "not_applicable",
+      "id": "COV-011",
+      "label": "Maintained network, authentication, and database boundaries",
+      "receiptRefs": [
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "needs_follow_up",
+      "id": "COV-012",
+      "label": "Proprietary Caustic parsers and embedded server",
+      "receiptRefs": [
+        "artifacts/01_context/libcaustic_imports.txt",
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "rejected",
+      "id": "COV-013",
+      "label": "Maintained vendored primitives",
+      "receiptRefs": [
+        "artifacts/02_discovery/work_ledger.jsonl",
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    },
+    {
+      "disposition": "needs_follow_up",
+      "id": "COV-014",
+      "label": "Generated dependencies and archived artifacts",
+      "receiptRefs": [
+        "artifacts/02_discovery/generated_exclusions.txt",
+        "artifacts/03_coverage/repository_coverage_ledger.md"
+      ]
+    }
+  ]
+}

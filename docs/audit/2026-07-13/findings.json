@@ -1,0 +1,287 @@
+{
+  "documentType": "codex-security.findings",
+  "findings": [
+    {
+      "attackPath": {
+        "priority": "P2",
+        "reportRef": "artifacts/05_findings/CAND-003/attack_path_analysis_report.md",
+        "status": "complete"
+      },
+      "codeEvidence": [
+        {
+          "code": "#ifdef CAUSTIC_FULL_322\n    g_audio.mic_running = 1;\n    SceUID mic_uid = sceKernelCreateThread(\"caustic_microphone\", microphone_thread, ...);\n    if (mic_uid >= 0)\n        sceKernelStartThread(mic_uid, 0, NULL);",
+          "endLine": 827,
+          "explanation": "The full322 startup path starts microphone capture during application initialization without checking an in-app recording state.",
+          "id": "mic-lifecycle",
+          "label": "Unconditional microphone startup",
+          "language": "c",
+          "path": "src/main.c",
+          "role": "root_control",
+          "startLine": 820
+        }
+      ],
+      "confidence": {
+        "level": "high",
+        "rationale": "Direct control-flow review shows unconditional thread startup and capture until shutdown; hardware testing confirmed the microphone path is active when the Vita hardware mute is disabled."
+      },
+      "extensions": {
+        "candidateId": "CAND-003",
+        "ledgerRowId": "COV-007",
+        "reportId": "CAND-003"
+      },
+      "findingId": "csf_fa20d3c5b612b1fe3e57c77f",
+      "fingerprints": {
+        "algorithm": "codex-security/v1",
+        "primary": "codex-security/v1:sha256:82393704bcf848655fd8855bf628d89b69c7c5ceef2a78f79a97cc9bd8910638"
+      },
+      "identity": {
+        "anchor": "unconditional-full322-microphone-thread"
+      },
+      "locations": [
+        {
+          "path": "src/main.c",
+          "role": "source",
+          "startLine": 820
+        },
+        {
+          "path": "src/main.c",
+          "role": "control",
+          "startLine": 482
+        },
+        {
+          "path": "src/main.c",
+          "role": "sink",
+          "startLine": 579
+        }
+      ],
+      "occurrenceId": "occ_5f5ce94ee07d180aa264334b",
+      "preventiveControls": [
+        "Centralized microphone state machine",
+        "Visible recording indicator",
+        "Lifecycle tests around suspend/resume/exit"
+      ],
+      "provenance": {
+        "source": "local_plugin"
+      },
+      "remediation": "Start capture only after an explicit in-app recording action, stop it immediately when recording ends, expose a visible capture indicator, and clear captured buffers after use.",
+      "remediationTests": [
+        "Launch and idle on every screen while verifying the microphone input port is closed.",
+        "Enter sampler and vocoder recording flows and verify capture starts only after the record action and stops on completion/cancel.",
+        "Suspend, resume, and exit during recording and verify the input port closes and buffers are cleared."
+      ],
+      "rootCause": {
+        "evidenceRefs": [
+          "mic-lifecycle"
+        ],
+        "summary": "Microphone lifetime is coupled to application lifetime instead of an explicit user recording state."
+      },
+      "ruleId": "privacy.microphone-continuous-capture",
+      "severity": {
+        "level": "medium"
+      },
+      "summary": "The full322 startup path opens the Vita microphone and continuously forwards ambient samples to the proprietary recording callback even when the user has not entered a recording workflow.",
+      "taxonomy": {
+        "category": "privacy",
+        "cwe": [
+          "CWE-359"
+        ]
+      },
+      "title": "Application captures microphone audio continuously from launch",
+      "validation": {
+        "method": "static-control-flow-plus-hardware-observation",
+        "status": "validated"
+      }
+    },
+    {
+      "attackPath": {
+        "priority": "P3",
+        "reportRef": "artifacts/05_findings/CAND-001/attack_path_analysis_report.md",
+        "status": "complete"
+      },
+      "codeEvidence": [
+        {
+          "code": "else if (strncmp(fname, \"/sdcard/\", 8) == 0) {\n    sceClibSnprintf(fopen_path_real, sizeof(fopen_path_real), DATA_PATH \"%s\", fname + 8);\n}\n...\nFILE* ret = sceLibcBridge_fopen(fopen_path_real, mode);",
+          "endLine": 132,
+          "explanation": "The suffix is concatenated without normalization or containment; dot segments survive to native fopen.",
+          "id": "fopen-path",
+          "label": "Unchecked fopen path join",
+          "language": "c",
+          "path": "src/reimpl/io.c",
+          "role": "sink",
+          "startLine": 119
+        }
+      ],
+      "confidence": {
+        "level": "medium",
+        "rationale": "The unsafe path construction and shipped fopen import are direct evidence, and real Caustic files serialize absolute paths; an end-to-end benign-sentinel Vita PoC through the stripped parser was not performed."
+      },
+      "extensions": {
+        "candidateId": "CAND-001",
+        "ledgerRowId": "COV-004",
+        "reportId": "CAND-001"
+      },
+      "findingId": "csf_07da95dfe8f68b47cc79eef9",
+      "fingerprints": {
+        "algorithm": "codex-security/v1",
+        "primary": "codex-security/v1:sha256:3421e118bb500a92a823429f4e5100200de0415909932ae5393f1056124c675f"
+      },
+      "identity": {
+        "anchor": "fopen-android-prefix-join-without-containment"
+      },
+      "locations": [
+        {
+          "path": "src/dynlib.c",
+          "role": "entrypoint",
+          "startLine": 724
+        },
+        {
+          "path": "src/reimpl/io.c",
+          "role": "control",
+          "startLine": 122
+        },
+        {
+          "path": "src/reimpl/io.c",
+          "role": "sink",
+          "startLine": 132
+        }
+      ],
+      "occurrenceId": "occ_4e550c8f895bcd0100299b68",
+      "preventiveControls": [
+        "Central path-policy helper",
+        "Canonical containment tests",
+        "Truncation checks"
+      ],
+      "provenance": {
+        "source": "local_plugin"
+      },
+      "remediation": "Route every filesystem bridge through a single length-checked normalizer that rejects dot-segment escape and unauthorized Vita mount paths, and restrict app0 access to read-only operations.",
+      "remediationTests": [
+        "Reject Android paths containing traversal segments that would escape ux0:/data/CAUSTIC3.",
+        "Reject direct Vita paths outside the approved data root while preserving valid Caustic assets.",
+        "Verify read, create, append, and truncate modes independently."
+      ],
+      "rootCause": {
+        "evidenceRefs": [
+          "fopen-path"
+        ],
+        "summary": "Prefix replacement is treated as path confinement even though it neither normalizes segments nor verifies the canonical destination remains beneath the allowed root."
+      },
+      "ruleId": "path-traversal.filesystem-fopen-bridge",
+      "severity": {
+        "level": "low"
+      },
+      "summary": "The fopen compatibility bridge strips an Android storage prefix and joins the remainder to the Caustic data root without canonicalizing dot segments or enforcing containment.",
+      "taxonomy": {
+        "category": "path-traversal",
+        "cwe": [
+          "CWE-22",
+          "CWE-23"
+        ]
+      },
+      "title": "Crafted Caustic paths escape the data root through fopen_soloader",
+      "validation": {
+        "method": "static-trace-and-deterministic-path-construction",
+        "status": "validated"
+      }
+    },
+    {
+      "attackPath": {
+        "priority": "P3",
+        "reportRef": "artifacts/05_findings/CAND-002/attack_path_analysis_report.md",
+        "status": "complete"
+      },
+      "codeEvidence": [
+        {
+          "code": "if (strncmp(_fname, \"/storage/emulated/0/\", 20) == 0)\n    sceClibSnprintf(mapped, sizeof(mapped), DATA_PATH \"%s\", _fname + 20);\n...\nint ret = open(mapped, flags);",
+          "endLine": 157,
+          "explanation": "The suffix is concatenated without normalization or containment; dot segments survive to native open.",
+          "id": "open-path",
+          "label": "Unchecked open path join",
+          "language": "c",
+          "path": "src/reimpl/io.c",
+          "role": "sink",
+          "startLine": 148
+        }
+      ],
+      "confidence": {
+        "level": "medium",
+        "rationale": "The unsafe path construction and shipped open/__open_2 imports are direct evidence, and real Caustic files serialize absolute paths; an end-to-end benign-sentinel Vita PoC through the stripped parser was not performed."
+      },
+      "extensions": {
+        "candidateId": "CAND-002",
+        "ledgerRowId": "COV-004",
+        "reportId": "CAND-002"
+      },
+      "findingId": "csf_b9a9a2f11679b1159bf86f1e",
+      "fingerprints": {
+        "algorithm": "codex-security/v1",
+        "primary": "codex-security/v1:sha256:da9d8c5cf6723cba37618b7560650f35ce0cbddeb363aeb0538320f78adb88c2"
+      },
+      "identity": {
+        "anchor": "open-android-prefix-join-without-containment"
+      },
+      "locations": [
+        {
+          "path": "src/dynlib.c",
+          "role": "entrypoint",
+          "startLine": 478
+        },
+        {
+          "path": "src/dynlib.c",
+          "role": "entrypoint",
+          "startLine": 903
+        },
+        {
+          "path": "src/reimpl/io.c",
+          "role": "control",
+          "startLine": 150
+        },
+        {
+          "path": "src/reimpl/io.c",
+          "role": "sink",
+          "startLine": 157
+        }
+      ],
+      "occurrenceId": "occ_9aabec3b0e1ae16b8a995b30",
+      "preventiveControls": [
+        "Shared path-policy helper",
+        "Flag-aware mount policy",
+        "Filesystem bridge integration tests"
+      ],
+      "provenance": {
+        "source": "local_plugin"
+      },
+      "remediation": "Use the same centralized, length-checked path-policy helper as fopen; reject traversal, unauthorized mounts, and write access to app0 before invoking native open.",
+      "remediationTests": [
+        "Exercise open and __open_2 with traversal paths for read-only and write flags.",
+        "Reject direct Vita paths outside the approved root and all app0 write attempts.",
+        "Confirm valid project, preset, sample, skin, save, and export operations still work."
+      ],
+      "rootCause": {
+        "evidenceRefs": [
+          "open-path"
+        ],
+        "summary": "The open bridge performs syntactic prefix substitution but does not enforce a filesystem policy on the resulting Vita path."
+      },
+      "ruleId": "path-traversal.filesystem-open-bridge",
+      "severity": {
+        "level": "low"
+      },
+      "summary": "The open and fortified __open_2 compatibility bridges replace Android storage prefixes without canonicalization or a containment check before native open.",
+      "taxonomy": {
+        "category": "path-traversal",
+        "cwe": [
+          "CWE-22",
+          "CWE-23"
+        ]
+      },
+      "title": "Crafted Caustic paths escape the data root through open_soloader",
+      "validation": {
+        "method": "static-trace-and-deterministic-path-construction",
+        "status": "validated"
+      }
+    }
+  ],
+  "scanId": "69c14c7dc438_20260713T222204Z",
+  "schemaVersion": "1.0"
+}

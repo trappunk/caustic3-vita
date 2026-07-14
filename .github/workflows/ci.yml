@@ -1,0 +1,27 @@
+name: Host checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  host-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and run path-policy tests
+        run: |
+          cc -std=c11 -Wall -Wextra -Werror -Isrc \
+            -DDATA_PATH='"ux0:/data/CAUSTIC3/"' \
+            tests/path_policy_test.c src/reimpl/path_policy.c \
+            -o /tmp/path-policy-test
+          /tmp/path-policy-test
+      - name: Check scripts
+        run: |
+          bash -n scripts/build-vpk.sh
+          bash -n scripts/verify-public-tree.sh
+      - name: Reject proprietary/generated files
+        run: ./scripts/verify-public-tree.sh

@@ -1,0 +1,32 @@
+#pragma once
+
+double bridge_acos(double x);
+double bridge_asin(double x);
+double bridge_atan(double x);
+double bridge_atan2(double y, double x);
+float bridge_atanf(float x);
+float bridge_atan2f(float y, float x);
+double bridge_ceil(double x);
+double bridge_cos(double x);
+float bridge_cosf(float x);
+double bridge_difftime(long end, long beginning);
+double bridge_exp(double x);
+double bridge_exp2(double x);
+float bridge_exp2f(float x);
+double bridge_floor(double x);
+double bridge_fmod(double x, double y);
+double bridge_ldexp(double x, int exp);
+double bridge_log(double x);
+double bridge_log10(double x);
+long bridge_lrint(double x);
+long bridge_lrintf(float x);
+float bridge_modff(float x, float *integer_part);
+double bridge_pow(double x, double y);
+double bridge_rint(double x);
+float bridge_rintf(float x);
+double bridge_sin(double x);
+float bridge_sinf(float x);
+void bridge_sincos(double x, double *s, double *c);
+void bridge_sincosf(float x, float *s, float *c);
+double bridge_sqrt(double x);
+double bridge_tan(double x);

@@ -1,0 +1,38 @@
+# Proprietary/runtime inputs
+*.apk
+*.vpk
+*.velf
+*.so
+*.suprx
+*.skprx
+eboot.bin
+assets/
+extras/
+
+# Toolchains, dependencies, and build output
+.toolchain/
+.deps/
+build/
+build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Private development material
+backups/
+recovery*/
+release-baseline/
+*.raw
+*.log
+crash*.txt
+core*
+
+# Editor/OS/Python
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+__pycache__/
+*.pyc

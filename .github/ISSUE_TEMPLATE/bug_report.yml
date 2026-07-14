@@ -1,0 +1,49 @@
+name: Vita bug report
+description: Report a reproducible wrapper problem on physical Vita hardware
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not upload APKs, native libraries, copyrighted projects, private recordings, or unsanitized logs.
+  - type: input
+    id: version
+    attributes:
+      label: Wrapper version/commit
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Vita model, firmware, and relevant plugins
+    validations:
+      required: true
+  - type: dropdown
+    id: profile
+    attributes:
+      label: APK profile
+      options: [full322, demo3320]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized log excerpt
