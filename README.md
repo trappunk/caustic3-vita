@@ -29,6 +29,8 @@ emulator, crack, or ownership claim over Caustic.
 - Optional physical controls with an on-screen focus indicator
 - Fullscreen 960×544 presentation and paced UI transitions
 - Project, preset, sample, skin, save, export, and data-directory support
+- Additional curated presets beyond the vanilla Caustic factory library in the
+  enhanced Vita build
 - First-launch extraction of factory content from the user's own APK
 - Custom Vita bubble and LiveArea assets
 - Two supported Caustic binary profiles selected by cryptographic hash
@@ -120,6 +122,23 @@ permission to package and redistribute anything you add.
 
 Complete instructions: [BUILDING.md](docs/BUILDING.md).
 
+## Enhanced content and skins
+
+The enhanced Vita build maintained and tested for this project includes a
+curated selection of additional presets that are not part of the vanilla
+Caustic installation. These expand the available sounds while leaving the
+original factory preset library intact.
+
+Optional third-party skins are also supported, but compatibility is not
+guaranteed. Some skins rely on Android-specific texture-atlas, font, or reload
+behavior and may show missing labels, blank UI elements, incorrect colors, or
+brief visual artifacts on Vita. The default Caustic skin is the recommended
+fallback if an extra skin does not render correctly.
+
+The public source repository does not redistribute third-party preset or skin
+packs. Locally owned or appropriately licensed extras can be supplied through
+the `extras/` build path described above.
+
 ## Controls
 
 Touch is the default and physical controls start disabled.
@@ -181,6 +200,9 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 - USB MIDI input is not supported. The Vita does not provide a conventional
   USB-OTG host path for class-compliant MIDI devices.
 - The controller layer synthesizes touch events and may need per-screen tuning.
+- Some optional third-party skins have incomplete Vita compatibility and can
+  display missing text, blank controls, texture-atlas errors, or transition
+  artifacts. Switching back to the default skin is the safest workaround.
 - Some unusually heavy projects or presets may exceed Vita performance or
   memory limits.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
