@@ -9,6 +9,10 @@
 - CMake, Python 3, `unzip`, and OpenSSL
 - A legally obtained APK matching a supported profile
 
+The supported maintenance APK is published by the Caustic developer on the
+[official Caustic 3 page](https://singlecellsoftware.com/caustic3.html). End
+users should begin with the [Vita installation tutorial](INSTALLING.md).
+
 All linked ARM libraries must agree on `-mfloat-abi=softfp` and the expected
 NEON configuration. ABI mismatches commonly produce link failures or runtime
 crashes.
