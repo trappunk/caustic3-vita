@@ -262,15 +262,13 @@ pthread_t *pthread_self_soloader() {
 int pthread_once_soloader(volatile int *once_control, void (*init_routine)(void)) {
     if (!once_control || !init_routine)
         return EINVAL;
-    if (__atomic_load_n(once_control, __ATOMIC_ACQUIRE) == 2)
-        return 0;
-    if (__sync_bool_compare_and_swap(once_control, 0, 1)) {
+    /* Match the compatibility behavior used by established Vita Android
+     * wrappers. Caustic can re-enter a one-time initializer while loading a
+     * project; waiting for a separate "complete" state here deadlocks that
+     * same thread. Claim the initializer atomically, but let recursive and
+     * concurrent callers continue instead of spinning. */
+    if (__sync_lock_test_and_set(once_control, 1) == 0)
         (*init_routine)();
-        __atomic_store_n(once_control, 2, __ATOMIC_RELEASE);
-    } else {
-        while (__atomic_load_n(once_control, __ATOMIC_ACQUIRE) != 2)
-            sceKernelDelayThread(100);
-    }
     return 0;
 }
 

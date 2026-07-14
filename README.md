@@ -28,7 +28,7 @@ modern 64-bit-compatible maintenance release, not the older demo APK used by
 the wrapper's legacy compatibility profile. The build script identifies the
 exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
-> **Project status: release candidate.** A complete, installable VPK is
+> **Project status: stable 1.0 release.** A complete, installable VPK is
 > published through [GitHub Releases](https://github.com/trappunk/caustic3-vita/releases).
 > End users do not need VitaSDK, a local build environment, or a separate APK.
 > Read [Known limitations](#known-limitations) before use.
@@ -249,8 +249,9 @@ without source. Read [SECURITY.md](SECURITY.md) and the
   memory limits.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
   outside this source audit.
-- The 01.01 path-policy build is source-verified and packaged successfully but
-  should be hardware regression-tested before replacing a known-good install.
+- Release 01.01 has been regression-tested on physical Vita hardware. Linker
+  section garbage collection remains disabled because Caustic reaches wrapper
+  functions indirectly through its runtime import resolver.
 
 ## Testing and diagnostics
 
