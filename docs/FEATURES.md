@@ -15,7 +15,7 @@
 | Save/load | Working | Projects save beneath `ux0:/data/CAUSTIC3/`. |
 | Front touch | Working | Direct touch mapping at Vita resolution. |
 | Multi-touch | Working | Multiple independent front-panel pointers support chords. |
-| Microphone | Working with limitation | Built-in/headset input works; capture currently runs continuously. |
+| Microphone | Working, compatibility behavior | Built-in/headset input works; capture runs continuously, matching original Caustic's initialization strategy. |
 | Physical controls | Experimental/working | Optional touch-synthesis layer toggled with Triangle. |
 | Left-stick rack scrolling | Experimental/working | Continuous synthetic swipe on the rack rail. |
 | Bubble/LiveArea | Working | Custom project-created Vita assets included. |
@@ -50,5 +50,5 @@
 - Android “Get More” integration
 - Guaranteed compatibility with unrecognized APK revisions
 - Independent audit of proprietary Caustic parser/server internals
-- On-demand microphone lifecycle (planned)
+- On-demand microphone lifecycle (not planned without a reliable record-state signal)
 - Automatic compatibility for arbitrary user-added Android skins

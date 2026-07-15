@@ -223,7 +223,9 @@ AI-assisted static security review covering 73 maintained files and the shipped
 native import surface. It produced three validated findings:
 
 1. **Medium:** microphone capture begins at application launch and continues
-   for the session. This remains open pending a reliable record-state signal.
+   for the session. This is now an accepted, disclosed compatibility behavior:
+   Caustic creator Rej Poirier confirmed that original Caustic also kept the
+   microphone initialized because toggling it could intermittently fail.
 2. **Low:** path escape through the `fopen` compatibility bridge. Fixed in
    01.01 by the shared path policy.
 3. **Low:** path escape through `open`/`__open_2`. Fixed in 01.01 by the same
@@ -236,9 +238,11 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 
 ## Known limitations
 
-- Microphone audio is currently captured continuously while the app is open.
-  The wrapper does not write those samples to a file, but this can affect
-  privacy, battery life, and performance headroom.
+- Microphone audio is captured continuously while the app is open. Rej Poirier
+  [confirmed this matches original Caustic behavior](https://www.reddit.com/r/Caustic3/comments/1uwa8nf/caustic_3_ps_vita_port/): keeping the input initialized avoided
+  intermittent failures when switching it on and off. The wrapper does not
+  write those samples to a file, but active capture can still affect privacy,
+  battery life, and performance headroom.
 - USB MIDI input is not supported. The Vita does not provide a conventional
   USB-OTG host path for class-compliant MIDI devices.
 - The controller layer synthesizes touch events and may need per-screen tuning.
