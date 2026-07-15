@@ -37,11 +37,11 @@ exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
 - Native ARMv7 execution through a TheFlow-style shared-object loader
 - OpenGL ES 2 rendering translated through vitaGL/vitaShaRK
-- Caustic 44.1 kHz audio resampled to Vita's 48 kHz output
+- Direct 44.1 kHz stereo output through the Vita BGM audio port
 - Built-in and headset microphone input resampled back to 44.1 kHz
 - Front-panel multi-touch, including polyphonic keyboard input
 - Optional physical controls with an on-screen focus indicator
-- Fullscreen 960×544 presentation and paced UI transitions
+- 960×544 logical rendering surface with paced UI transitions
 - Project, preset, sample, skin, save, export, and data-directory support
 - Additional curated presets beyond the vanilla Caustic factory library in the
   enhanced Vita build
@@ -207,7 +207,7 @@ User-supplied APK
 Caustic native calls
     ├── Android/JNI lifecycle ─────────> FalsoJNI compatibility layer
     ├── GLES2 ─────────────────────────> vitaGL + vitaShaRK
-    ├── audio output ──────────────────> 44.1 kHz → 48 kHz SceAudioOut
+    ├── audio output ──────────────────> direct 44.1 kHz SceAudioOut
     ├── microphone ────────────────────> 48 kHz → 44.1 kHz callback
     ├── touch/controller ──────────────> synthesized native touch events
     └── Android filesystem paths ──────> confined Vita path policy
@@ -248,8 +248,17 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 - The controller layer synthesizes touch events and may need per-screen tuning.
 - The bundled skin collection is hardware-tested. Unrecognized third-party
   skins may still require removal of Android-specific font scale overrides.
-- Some unusually heavy projects or presets may exceed Vita performance or
-  memory limits.
+- Dense polyphony and some feedback-heavy Modular configurations can produce
+  harsh digital artifacts on Vita hardware. In severe cases, a Modular voice
+  can continue sounding after transport is stopped. Testing ruled out the
+  wrapper's output sample rate, buffer size, microphone thread, rendering
+  frame rate, CPU affinity, and storage-backed memory mapping as complete
+  fixes. The remaining path is inside the stripped Caustic DSP engine or its
+  machine-specific compatibility behavior.
+- For demanding projects, reduce simultaneous voices, avoid extreme Modular
+  feedback/resonance, and render complex parts to stems before layering more
+  machines. Overclocking can provide some headroom but does not eliminate this
+  limitation.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
   outside this source audit.
 - Release 01.02 has been regression-tested on physical Vita hardware. Linker

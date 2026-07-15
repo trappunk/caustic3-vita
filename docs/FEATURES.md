@@ -5,10 +5,10 @@
 | Area | Status | Notes |
 |---|---|---|
 | Application boot/lifecycle | Working | ARMv7 module loads and reaches the Caustic UI. |
-| Rendering | Working | GLES2 translated through vitaGL; fullscreen 960×544. |
+| Rendering | Working | GLES2 translated through vitaGL on a 960×544 logical surface. |
 | UI transition pacing | Working | Explicit VBlank producer pacing reduces intermediate-frame flashes. |
-| Audio output | Working | Caustic 44.1 kHz engine converted to Vita 48 kHz output. |
-| Synth and BeatBox playback | Working | Machine-specific geometry/audio compatibility fixes included. |
+| Audio output | Working with stress limitation | Direct 44.1 kHz Vita BGM output; dense polyphony can produce harsh artifacts. |
+| Synth and BeatBox playback | Working with stress limitation | Machine-specific compatibility fixes included; some feedback-heavy Modular patches remain problematic. |
 | Preset discovery/loading | Working | APK factory content is extracted into the Vita data root. |
 | Additional presets | Working in enhanced build | Curated presets beyond the vanilla factory library can be installed without replacing factory content. |
 | Bundled skins | Working | Default, Flat, Blackbox, Frost, Darker, newskin, Julia, and Echo were normalized and checked on physical hardware. |
@@ -52,3 +52,4 @@
 - Independent audit of proprietary Caustic parser/server internals
 - On-demand microphone lifecycle (not planned without a reliable record-state signal)
 - Automatic compatibility for arbitrary user-added Android skins
+- Artifact-free playback of every dense-polyphony or feedback-heavy Modular project

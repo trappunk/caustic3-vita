@@ -26,10 +26,17 @@ for VBlank so intermediate menu/rack transition states are not over-queued.
 
 ## Audio output
 
-Caustic produces 256-frame stereo blocks at 44.1 kHz. The wrapper maintains
-persistent resampling phase across block boundaries, converts to 48 kHz, and
-submits fixed-size buffers to `SceAudioOut`. Persistent phase and prior-sample
-state avoid periodic boundary clicks.
+Caustic produces 256-frame stereo blocks at 44.1 kHz. The Vita BGM port accepts
+that rate directly, so the wrapper submits fixed-size blocks to `SceAudioOut`
+without output resampling. This avoids resampling coloration and reduces work
+on the real-time audio thread.
+
+Physical-hardware stress testing found that dense polyphony and certain
+feedback-heavy Modular configurations can still generate harsh digital
+artifacts. Output-buffer, sample-rate, microphone, rendering-rate, CPU-affinity,
+and file-backed-memory experiments did not remove the problem. Evidence points
+to the stripped native DSP path or machine-specific compatibility behavior,
+which cannot be fully audited without Caustic's source.
 
 ## Microphone input
 

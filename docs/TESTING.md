@@ -33,8 +33,18 @@
 - Low and high notes across several synths.
 - 808/sub-bass material for clipping/clicks.
 - Dense projects for underruns.
+- Increase polyphony one voice at a time and record the first voice count that
+  produces harsh digital artifacts.
+- Stress feedback-heavy Modular patches, then stop transport and verify that
+  every voice releases.
 - Start/stop/restart transport repeatedly.
 - Headphones and Vita speakers.
+
+Known hardware result: dense polyphony and some Modular configurations can
+produce harsh artifacts even with direct 44.1 kHz output. Buffer-size,
+microphone, rendering-rate, CPU-affinity, and storage-backed-memory candidates
+did not eliminate it. Treat this as a release limitation, not as proof of a
+speaker or headphone fault.
 
 ## Microphone
 

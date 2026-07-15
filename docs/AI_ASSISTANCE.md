@@ -13,7 +13,7 @@ code and security claims.
 - ARMv7 wrapper/lifecycle debugging
 - Import resolution and Android/Bionic compatibility functions
 - vitaGL rendering and geometry troubleshooting
-- 44.1/48 kHz audio resampling and click-boundary analysis
+- Audio sample-rate, buffering, overload, and click-boundary analysis
 - Vita microphone capture and input resampling
 - Multi-touch and controller-generated touch logic
 - Filesystem mapping, persistence, preset discovery, and saving
