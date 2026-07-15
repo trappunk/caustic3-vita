@@ -44,6 +44,8 @@
 - Cancel, complete, suspend, resume, and exit around recording.
 - Watch battery/thermal behavior during an extended idle session because the
   current build captures continuously.
+- Treat microphone lifecycle changes as high-risk compatibility work: original
+  Caustic kept input initialized to avoid intermittent reinitialization failure.
 
 ## Data
 

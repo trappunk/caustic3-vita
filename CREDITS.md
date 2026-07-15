@@ -5,6 +5,10 @@
 - **Rej Poirier / Single Cell Software** — creator of Caustic and its original
   engine, interface, machines, workflow, and Android application. Thank you for
   creating Caustic and making the final Android maintenance build available.
+  After release, Rej publicly congratulated the port and clarified that its
+  always-ready microphone behavior matches original Caustic's reliability
+  strategy. This acknowledgment is appreciated and is not presented as a
+  license transfer or blanket endorsement.
 
 ## Vita wrapper
 

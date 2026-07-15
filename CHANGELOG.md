@@ -10,6 +10,8 @@
 - Added complete normalized Julia and Echo skin bundles to the enhanced release.
 - Removed macOS AppleDouble metadata from packaged skin directories.
 - Finalized the borderless custom LiveArea presentation and launch target.
+- Documented Rej Poirier's confirmation that always-ready microphone input
+  matches original Caustic and avoids unreliable reinitialization.
 
 ## 01.01 — 2026-07-13 (stable 1.0 release)
 

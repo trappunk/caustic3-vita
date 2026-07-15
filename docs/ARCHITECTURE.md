@@ -35,8 +35,10 @@ state avoid periodic boundary clicks.
 
 The Vita voice input port captures 768-frame, 48 kHz mono blocks. A continuous
 phase resampler converts them to Caustic's 256-frame, 44.1 kHz mono callback.
-Current limitation: the input thread starts with the app rather than only when
-Caustic arms recording. Buffers are fixed-size and reused; the wrapper does not
+The input thread starts with the app rather than only when Caustic arms
+recording. Rej Poirier confirmed this matches original Caustic's strategy:
+keeping input initialized avoided intermittent failures caused by toggling the
+microphone on and off. Buffers are fixed-size and reused; the wrapper does not
 write captured samples to disk.
 
 ## Input
