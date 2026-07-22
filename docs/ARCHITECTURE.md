@@ -31,12 +31,13 @@ that rate directly, so the wrapper submits fixed-size blocks to `SceAudioOut`
 without output resampling. This avoids resampling coloration and reduces work
 on the real-time audio thread.
 
-Physical-hardware stress testing found that dense polyphony and certain
-feedback-heavy Modular configurations can still generate harsh digital
-artifacts. Output-buffer, sample-rate, microphone, rendering-rate, CPU-affinity,
-and file-backed-memory experiments did not remove the problem. Evidence points
-to the stripped native DSP path or machine-specific compatibility behavior,
-which cannot be fully audited without Caustic's source.
+Caustic's Android library uses the base AAPCS/softfp convention while VitaSDK's
+libm uses VFP registers. Dedicated bridges accept Android-style core-register
+arguments, move them into the Vita hardfp convention, call the accurate VitaSDK
+libm implementation, and return results in Android's expected registers. This
+also avoids the limited-domain approximations previously used for functions
+such as `tanf`, `powf`, and `sinf`. Those approximations could produce unstable
+filter coefficients and make Caustic's own machine meters redline.
 
 ## Microphone input
 

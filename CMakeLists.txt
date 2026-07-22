@@ -10,7 +10,7 @@ include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
 set(VITA_APP_NAME "Caustic 3 Vita")
 set(VITA_TITLEID "CSTC00001")
-set(VITA_VERSION "01.02")
+set(VITA_VERSION "01.03")
 set(VPK_DATA_ROOT "/tmp/caustic3-vpk-data" CACHE PATH "Space-free path to APK data")
 set(CAUSTIC_PROFILE "demo3320" CACHE STRING "Caustic native binary profile")
 option(CAUSTIC_INCLUDE_EXTRAS "Package locally supplied optional extras" OFF)

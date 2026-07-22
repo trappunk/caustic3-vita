@@ -1,6 +1,12 @@
 # Caustic 3 Vita
 
 <p align="center">
+  <a href="https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes"><img src="https://dl.glitter-graphics.com/pub/3041/3041875fnn7zypsfy.gif" width="30" height="16" alt="Animated music notes"></a>
+  <strong>make something weird</strong>
+  <a href="https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes"><img src="https://dl.glitter-graphics.com/pub/3041/3041875fnn7zypsfy.gif" width="30" height="16" alt="Animated music notes"></a>
+</p>
+
+<p align="center">
   <img src="sce_sys/livearea/contents/bg0.png"
        alt="Caustic 3 Vita LiveArea artwork"
        width="840">
@@ -28,7 +34,7 @@ modern 64-bit-compatible maintenance release, not the older demo APK used by
 the wrapper's legacy compatibility profile. The build script identifies the
 exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
-> **Project status: stable 1.0 release.** A complete, installable VPK is
+> **Project status: stable v1.0.2 release.** A complete, installable VPK is
 > published through [GitHub Releases](https://github.com/trappunk/caustic3-vita/releases).
 > End users do not need VitaSDK, a local build environment, or a separate APK.
 > Read [Known limitations](#known-limitations) before use.
@@ -38,6 +44,7 @@ exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 - Native ARMv7 execution through a TheFlow-style shared-object loader
 - OpenGL ES 2 rendering translated through vitaGL/vitaShaRK
 - Direct 44.1 kHz stereo output through the Vita BGM audio port
+- Accurate Android softfp-to-Vita hardfp math bridges for stable synth DSP
 - Built-in and headset microphone input resampled back to 44.1 kHz
 - Front-panel multi-touch, including polyphonic keyboard input
 - Optional physical controls with an on-screen focus indicator
@@ -82,6 +89,8 @@ The Vita work in this repository was developed and hardware-tested by
 Additional foundations include VitaSDK, vitaGL, vitaShaRK, kubridge, FalsoJNI,
 the Vita Android-wrapper community, TheFloW's loader techniques, and work by
 Rinnegatamante and other Vita homebrew contributors. See [CREDITS.md](CREDITS.md).
+The tiny animated music-note accent links back to its
+[Glitter-Graphics source](https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes).
 
 ## What is included
 
@@ -248,20 +257,9 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 - The controller layer synthesizes touch events and may need per-screen tuning.
 - The bundled skin collection is hardware-tested. Unrecognized third-party
   skins may still require removal of Android-specific font scale overrides.
-- Dense polyphony and some feedback-heavy Modular configurations can produce
-  harsh digital artifacts on Vita hardware. In severe cases, a Modular voice
-  can continue sounding after transport is stopped. Testing ruled out the
-  wrapper's output sample rate, buffer size, microphone thread, rendering
-  frame rate, CPU affinity, and storage-backed memory mapping as complete
-  fixes. The remaining path is inside the stripped Caustic DSP engine or its
-  machine-specific compatibility behavior.
-- For demanding projects, reduce simultaneous voices, avoid extreme Modular
-  feedback/resonance, and render complex parts to stems before layering more
-  machines. Overclocking can provide some headroom but does not eliminate this
-  limitation.
 - The proprietary Caustic engine is a stripped binary; internal parsers are
   outside this source audit.
-- Release 01.02 has been regression-tested on physical Vita hardware. Linker
+- Release 01.03 has been regression-tested on physical Vita hardware. Linker
   section garbage collection remains disabled because Caustic reaches wrapper
   functions indirectly through its runtime import resolver.
 

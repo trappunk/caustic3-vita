@@ -33,18 +33,16 @@
 - Low and high notes across several synths.
 - 808/sub-bass material for clipping/clicks.
 - Dense projects for underruns.
-- Increase polyphony one voice at a time and record the first voice count that
-  produces harsh digital artifacts.
+- Increase polyphony and verify that machine meters respond normally without
+  preset-dependent full-scale noise.
 - Stress feedback-heavy Modular patches, then stop transport and verify that
-  every voice releases.
+  every voice releases cleanly.
 - Start/stop/restart transport repeatedly.
 - Headphones and Vita speakers.
 
-Known hardware result: dense polyphony and some Modular configurations can
-produce harsh artifacts even with direct 44.1 kHz output. Buffer-size,
-microphone, rendering-rate, CPU-affinity, and storage-backed-memory candidates
-did not eliminate it. Treat this as a release limitation, not as proof of a
-speaker or headphone fault.
+Hardware result for 01.03: previously failing Subsynth presets and larger
+projects play cleanly after replacing limited-range DSP math approximations
+with explicit softfp-to-hardfp VitaSDK libm bridges.
 
 ## Microphone
 

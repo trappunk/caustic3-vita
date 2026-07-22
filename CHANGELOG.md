@@ -1,5 +1,17 @@
 # Changelog
 
+## 01.03 — 2026-07-21 (stable 1.0.2 release)
+
+- Fixed preset-dependent Subsynth, Modular, and dense-project crackling that
+  could immediately drive Caustic's own machine meters into the red.
+- Replaced limited-range math-neon/custom approximations with accurate VitaSDK
+  libm calls behind explicit Android softfp-to-Vita hardfp ABI bridges.
+- Corrected single- and double-precision trigonometric, exponential,
+  logarithmic, power, rounding, and remainder imports used by Caustic DSP.
+- Verified the corrected full 3.2.2 profile on physical Vita hardware across
+  previously failing Subsynth presets and larger projects.
+- Added a restrained retro music-note accent to the README with source credit.
+
 ## 01.02 — 2026-07-14 (stable 1.0.1 release)
 
 - Corrected Vita font inheritance for the complete bundled skin collection.
