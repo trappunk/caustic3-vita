@@ -43,7 +43,7 @@ exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
 - Native ARMv7 execution through a TheFlow-style shared-object loader
 - OpenGL ES 2 rendering translated through vitaGL/vitaShaRK
-- Direct 44.1 kHz stereo output through the Vita BGM audio port
+- <a href="https://www.glitter-graphics.com/gifs/mini/35U0-sound"><img src="https://dl.glitter-graphics.com/pub/1498/1498215hysikq1pnh.gif" width="20" height="15" alt="Animated sound icon"></a> Direct 44.1 kHz stereo output through the Vita BGM audio port
 - Accurate Android softfp-to-Vita hardfp math bridges for stable synth DSP
 - Built-in and headset microphone input resampled back to 44.1 kHz
 - Front-panel multi-touch, including polyphonic keyboard input
@@ -83,14 +83,18 @@ documents the non-commercial community-distribution basis used here.
 
 The Vita work in this repository was developed and hardware-tested by
 **trappunk (Tennis Rodman)** in July 2026, with extensive assistance from
+<a href="https://www.glitter-graphics.com/gifs/mini/1PfH-rainbow-mini-computer"><img src="https://dl.glitter-graphics.com/pub/885/885733h3ev819pjh.gif" width="24" height="20" alt="Animated rainbow computer"></a>
 **OpenAI Codex**. The AI disclosure is intentionally explicit; see
 [AI_ASSISTANCE.md](docs/AI_ASSISTANCE.md).
 
 Additional foundations include VitaSDK, vitaGL, vitaShaRK, kubridge, FalsoJNI,
 the Vita Android-wrapper community, TheFloW's loader techniques, and work by
 Rinnegatamante and other Vita homebrew contributors. See [CREDITS.md](CREDITS.md).
-The tiny animated music-note accent links back to its
-[Glitter-Graphics source](https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes).
+The tiny animated [music notes](https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes),
+[sound icon](https://www.glitter-graphics.com/gifs/mini/35U0-sound), and
+[rainbow computer](https://www.glitter-graphics.com/gifs/mini/1PfH-rainbow-mini-computer)
+link back to their Glitter-Graphics source pages. The animated Clippy footer
+comes from [Webpets](https://webpets-flame.vercel.app/).
 
 ## What is included
 
@@ -292,3 +296,7 @@ improvements are welcome. Do not submit proprietary APKs, native libraries,
 factory content, third-party packs, secrets, or generated VPKs.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+<p align="center">
+  <a href="https://webpets-flame.vercel.app/"><img src="https://webpets-flame.vercel.app/generated/clippy/black_run_8fps.gif" width="750" height="71" alt="Clippy running across the page on a skateboard"></a>
+</p>
