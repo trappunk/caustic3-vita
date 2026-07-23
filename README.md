@@ -72,6 +72,11 @@ exact supported APK by SHA-256 and loads its included ARMv7 library on Vita.
 
 See [FEATURES.md](docs/FEATURES.md) for the detailed compatibility matrix.
 
+<p align="center">
+  <img src="docs/assets/gifs/traveling/vita-dj-skate-loop.gif"
+       width="750" alt="Animated Vita DJ skating across the page">
+</p>
+
 ## Credits and lineage
 
 This port would not exist without the groundwork in
@@ -104,8 +109,7 @@ Rinnegatamante and other Vita homebrew contributors. See [CREDITS.md](CREDITS.md
 The tiny animated [music notes](https://www.glitter-graphics.com/gifs/dancing/6asI-music-notes),
 [sound icon](https://www.glitter-graphics.com/gifs/mini/35U0-sound), and
 [rainbow computer](https://www.glitter-graphics.com/gifs/mini/1PfH-rainbow-mini-computer)
-link back to their Glitter-Graphics source pages. The animated Clippy footer
-comes from [Webpets](https://webpets-flame.vercel.app/).
+link back to their Glitter-Graphics source pages.
 
 ## What is included
 
@@ -178,6 +182,11 @@ large collections selectively rather than copying several gigabytes to the
 Vita at once. Project files created on faster PCs or modern Android hardware
 may also exceed the Vita's real-time audio capacity; see
 [Known limitations](#known-limitations).
+
+<p align="center">
+  <img src="docs/assets/gifs/traveling/vita-card-courier.gif"
+       width="750" alt="Animated Vita game-card courier walking across the page">
+</p>
 
 ## Runtime requirements
 
@@ -289,6 +298,11 @@ The proprietary, stripped Caustic parser/server internals could not be audited
 without source. Read [SECURITY.md](SECURITY.md) and the
 [full audit report](docs/audit/2026-07-13/report.md).
 
+<p align="center">
+  <img src="docs/assets/gifs/traveling/vita-bubble-patrol.gif"
+       width="750" alt="Animated Vita home-screen bubble patrolling the page">
+</p>
+
 ## Known limitations
 
 - The Vita cannot guarantee clean real-time playback of every project created
@@ -346,5 +360,6 @@ factory content, third-party packs, secrets, or generated VPKs.
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <p align="center">
-  <a href="https://webpets-flame.vercel.app/"><img src="https://webpets-flame.vercel.app/generated/clippy/black_run_8fps.gif" width="750" height="71" alt="Clippy running across the page on a skateboard"></a>
+  <img src="docs/assets/gifs/traveling/vita-runner-crossing.gif"
+       width="750" alt="Animated Vita mascot running across the page">
 </p>
