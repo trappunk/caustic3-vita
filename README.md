@@ -12,6 +12,17 @@
        width="840">
 </p>
 
+<p align="center">
+  <img src="docs/assets/gifs/vita-wake-up.gif"
+       width="72" height="48" alt="Tiny animated PlayStation Vita mascot">
+  &nbsp;&nbsp;
+  <img src="docs/assets/gifs/caustic-cube-groove.gif"
+       width="54" height="54" alt="Animated Caustic cube mascot grooving">
+  &nbsp;&nbsp;
+  <img src="docs/assets/gifs/modular-patch-dance.gif"
+       width="58" height="56" alt="Animated modular synthesizer mascot dancing">
+</p>
+
 An unofficial, non-commercial PlayStation Vita wrapper for **Caustic 3**, the
 mobile music workstation created by **Rej Poirier / Single Cell Software**.
 
