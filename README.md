@@ -150,6 +150,35 @@ See the complete [Vita installation tutorial](docs/INSTALLING.md) for:
 - transferring and installing through VitaShell USB or FTP;
 - first-launch, update, backup, and troubleshooting instructions.
 
+## Learning and community content
+
+Most Caustic machines have dedicated walkthroughs on the official
+[Caustic App YouTube channel](https://www.youtube.com/@CausticApp). These
+tutorials were made for Caustic itself, so their instrument, rack, sequencing,
+mixing, and workflow guidance also applies to the Vita wrapper.
+
+Additional community resources include:
+
+- [Caustic 3 Archive](https://www.caustic3archive.com/home), an evolving
+  preservation project for Caustic history, machines, tutorials, presets,
+  themes, and community material;
+- [80NS Caustic Preset Library](https://sites.google.com/view/80nscausticpresetlibrary/packs/vol-2),
+  including a documented 180-preset collection across several machines;
+- the community-maintained
+  [Ultimate Caustic Presets Collection](https://www.reddit.com/r/Caustic3/comments/1ph3xs3/ultimate_caustic_presets_collection_7gb/),
+  a very large archive of historical presets and skins; and
+- a community
+  [Caustic 3 project-file playlist](https://www.youtube.com/playlist?list=PLRX_LscS1Ssyi1BOfML04hvcGXsG5bKho)
+  with downloadable learning projects where their original links remain live.
+
+These are independent third-party resources. They are not mirrored, audited,
+licensed, or guaranteed by this project. Check the rights attached to each
+download, scan files from unfamiliar hosts, back up your Caustic data, and add
+large collections selectively rather than copying several gigabytes to the
+Vita at once. Project files created on faster PCs or modern Android hardware
+may also exceed the Vita's real-time audio capacity; see
+[Known limitations](#known-limitations).
+
 ## Runtime requirements
 
 - A homebrew-enabled PlayStation Vita
@@ -262,6 +291,14 @@ without source. Read [SECURITY.md](SECURITY.md) and the
 
 ## Known limitations
 
+- The Vita cannot guarantee clean real-time playback of every project created
+  on a modern PC, tablet, or high-performance Android device. Dense songs with
+  many simultaneous voices, effects, automation lanes, or streamed samples can
+  exceed the Vita's CPU and audio deadline, producing crackling, harsh output,
+  timing instability, or stalled playback. Overclocking can provide additional
+  headroom but cannot remove the hardware limit. Simplifying the arrangement,
+  reducing polyphony and effects, or working from smaller projects is the most
+  reliable workaround.
 - Microphone audio is captured continuously while the app is open. Rej Poirier
   [confirmed this matches original Caustic behavior](https://www.reddit.com/r/Caustic3/comments/1uwa8nf/caustic_3_ps_vita_port/): keeping the input initialized avoided
   intermittent failures when switching it on and off. The wrapper does not
